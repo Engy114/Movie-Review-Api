@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from reviews.views import AddReviewView
-
+from reviews.views import ProtectedView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

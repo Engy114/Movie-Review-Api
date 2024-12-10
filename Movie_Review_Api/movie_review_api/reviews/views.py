@@ -5,7 +5,7 @@ from rest_framework import status
 from .models import User
 from .serializers import UserSerializer
 from .serializers import ReviewSerializer
-
+from rest_framework.permissions import IsAuthenticated
 
 class UserRegistrationView(APIView):
     def post(self, request):
@@ -24,7 +24,7 @@ class AddReviewView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    from rest_framework.permissions import IsAuthenticated
+    
 from rest_framework.views import APIView
 
 class ProtectedView(APIView):
