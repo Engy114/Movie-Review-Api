@@ -24,3 +24,12 @@ class AddReviewView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+
+class ProtectedView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": "This is a protected endpoint"}, status=200)
+

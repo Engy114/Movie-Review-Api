@@ -28,8 +28,13 @@ from reviews.views import UserRegistrationView
 
 urlpatterns = [
     path('users/register', UserRegistrationView.as_view(), name='user-register'),
+    path('movies/<int:movie_id>/reviews', AddReviewView.as_view(), name='add-review'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('protected/', ProtectedView.as_view(), name='protected'),
 ]
 
-urlpatterns += [
-    path('movies/<int:movie_id>/reviews', AddReviewView.as_view(), name='add-review'),
-]
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
