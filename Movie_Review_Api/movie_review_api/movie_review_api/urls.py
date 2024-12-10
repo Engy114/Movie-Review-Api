@@ -16,7 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from reviews.views import AddReviewView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+ 
+from django.urls import path
+from reviews.views import UserRegistrationView
+
+urlpatterns = [
+    path('users/register', UserRegistrationView.as_view(), name='user-register'),
+]
+
+urlpatterns += [
+    path('movies/<int:movie_id>/reviews', AddReviewView.as_view(), name='add-review'),
 ]
